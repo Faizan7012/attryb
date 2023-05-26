@@ -3,14 +3,14 @@
 
 <img align="left" width="50" alt="tools" src="https://camo.githubusercontent.com/beb64ff21c883e318e4f5db5231c2ba4175705bea1c9249e82a41ab375db4f75/68747470733a2f2f6d65646961322e67697068792e636f6d2f6d656469612f51737347456d706b79454f684243623765312f67697068792e6769663f6369643d656366303565343761306e336769316266716e74716d6f62386739616964316f796a327772336473336d67373030626c267269643d67697068792e676966" />
 
-#Attryb Assignment
+#Buy Cars
 
 >You'll be able to add cars, update cars , delete cars , login , signup
 
 
 <p align="center">
   <a href="https://task-manager-weld-iota.vercel.app">
-    <img src="https://readme-typing-svg.demolab.com/?lines=Social Media App!; .....You can Post your thought 👨🏻‍💻; Through%20this%20App%20%20!&font=Fira%20Code&center=true&width=440&height=45&color=#37bcf7&vCenter=true&size=22&pause=1000"></a>
+    <img src="https://readme-typing-svg.demolab.com/?lines=Buy Cars!; .....You can buy or sell your cars 👨🏻‍💻; Through%20this%20App%20%20!&font=Fira%20Code&center=true&width=440&height=45&color=#37bcf7&vCenter=true&size=22&pause=1000"></a>
 </p>
 
 <img align="left" width="50" alt="tools" src="https://camo.githubusercontent.com/beb64ff21c883e318e4f5db5231c2ba4175705bea1c9249e82a41ab375db4f75/68747470733a2f2f6d65646961322e67697068792e636f6d2f6d656469612f51737347456d706b79454f684243623765312f67697068792e6769663f6369643d656366303565343761306e336769316266716e74716d6f62386739616964316f796a327772336473336d67373030626c267269643d67697068792e676966" />
@@ -42,38 +42,6 @@
 
 <h2>Project Duration</h2>
 <p>48 hours</p>  
-
-<h2>Project Screenshots<h2>
-<p></p>
- <div style="display: grid; grid-template-columns: repeat(1,1fr); gap:20px " >
-  <img style="width: 100%;" src="https://i.ibb.co/sQVFXRD/Screenshot-280.png" alt="">
- </div>
- 
- <p></p>
- <div style="display: grid; grid-template-columns: repeat(1,1fr); gap:20px " >
-  <img style="width: 100%;" src="https://i.ibb.co/7C5P0BB/Screenshot-281.png" alt="">
- </div>
- 
- <p></p>
- <div style="display: grid; grid-template-columns: repeat(1,1fr); gap:20px " >
-  <img style="width: 100%;" src="https://i.ibb.co/qJFcZyw/Screenshot-282.png" alt="">
- </div>
- 
- <p></p>
- <div style="display: grid; grid-template-columns: repeat(1,1fr); gap:20px " >
-  <img style="width: 100%;" src="https://i.ibb.co/HF79qZj/Screenshot-283.png" alt="">
- </div>
- 
- <p></p>
- <div style="display: grid; grid-template-columns: repeat(1,1fr); gap:20px " >
-  <img style="width: 100%;" src="https://i.ibb.co/2s1Hkx7/Screenshot-284.png" alt="">
- </div>
- 
- <p></p>
- <div style="display: grid; grid-template-columns: repeat(1,1fr); gap:20px " >
-  <img style="width: 100%;" src="https://i.ibb.co/gT67m8Y/Screenshot-285.png" alt="">
- </div>
-
 
 
 
