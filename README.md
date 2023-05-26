@@ -51,7 +51,7 @@
 Clone the project
 
 ```bash or zsh
-  git clone https://github.com/Faizan7012/adove-app.git
+  git clone https://github.com/Faizan7012/attryb.git
 ```
 
 Go to the project directory
