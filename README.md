@@ -9,7 +9,7 @@
 
 
 <p align="center">
-  <a href="https://task-manager-weld-iota.vercel.app">
+  <a href="https://attryb-test.vercel.app">
     <img src="https://readme-typing-svg.demolab.com/?lines=Buy Cars!; .....You can buy or sell your cars 👨🏻‍💻; Through%20this%20App%20%20!&font=Fira%20Code&center=true&width=440&height=45&color=#37bcf7&vCenter=true&size=22&pause=1000"></a>
 </p>
 
@@ -30,7 +30,7 @@
 
 <h2 align="left"><i>Deployed link</i></h2>
 
-<h3 align="left"><a href="https://attryb.vercel.app/" target="_blank">Attryb Assignment</a></h3>
+<h3 align="left"><a href="https://attryb-test.vercel.app" target="_blank">Attryb Assignment</a></h3>
 
 <h1>Contributor</h1>
     <ul>
