@@ -26,20 +26,17 @@ const Navbar = ()=>{
   <Spacer />
   <ButtonGroup gap='10'>
    <Link to='/'>
-    <Button _hover={{bg:'none'}} border='none' bg='none'>Home</Button>
+    <Button _hover={{bg:'none'}} border='none' bg='none'>Second Hand Cars</Button>
    </Link>
    <Link to='/add'>
    <Button border='none' _hover={{bg:'none'}} bg='none'>Add Car</Button>
    </Link>
-   <Link to='/mycar'>
-   <Button border='none' _hover={{bg:'none'}} bg='none'>My Car</Button>
-   </Link>
-   <Link to='/login'>
     {
       isAuth?<Button bg='black' color='#fff' _hover={{bg:'black'}} onClick={handleLogout}>Logout</Button>:
+   <Link to='/login'>
    <Button bg='black' color='#fff' _hover={{bg:'black'}}>Login</Button>
-    }
    </Link>
+    }
   </ButtonGroup>
 </Flex>
        </Box>
@@ -64,20 +61,17 @@ const Navbar = ()=>{
   <Flex bg='#202A44'  h='100vh' w='100%' padding='10px 40px' flexDirection='column' position='absolute' left={isOpen?'0px':'-1000px'} top='60px' transition='.3s all ease'>
 
     <Link to='/'>
-    <Button _hover={{bg:'none'}} onClick={()=>setIsOpen(!isOpen)} border='none' bg='none'>Home</Button>
+    <Button _hover={{bg:'none'}} onClick={()=>setIsOpen(false)} border='none' bg='none'>Second Hand Cars</Button>
     </Link>
     <Link to='/add'>
-    <Button _hover={{bg:'none'}} border='none' bg='none'>Add Car</Button>
+    <Button onClick={()=>setIsOpen(false)} _hover={{bg:'none'}} border='none' bg='none'>Add Car</Button>
     </Link>
-   <Link to='/mycars'>
-    <Button _hover={{bg:'none'}} onClick={()=>setIsOpen(!isOpen)} border='none' bg='none'>My Cars</Button>
-   </Link>
-   <Link to='/login'>
     {
-      isAuth?<Button bg='none' onClick={handleLogout}>Logout</Button>:
+      isAuth?<Button bg='none' onClick={()=>handleLogout()}>Logout</Button>:
+   <Link to='/login'>
    <Button onClick={()=>setIsOpen(!isOpen)} bg='none' >Login</Button>
-    }
    </Link>
+    }
   </Flex>
        
     </Box>

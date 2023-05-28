@@ -22,9 +22,10 @@ function MyCars(){
 
 
      useEffect(()=>{
+        // get all cars data
         setLoading(true)
         async function getData(){
-            let api = API(mileage , price ,color , `https://stormy-tights-hen.cyclic.app/car/${user._id}`)
+            let api = API(mileage , price ,color , `https://stormy-tights-hen.cyclic.app/car`)
             let res = await axios.get(api);
             let ans = await res.data;
             if(ans.status){
@@ -34,7 +35,8 @@ function MyCars(){
         }
         getData();
      },[price , mileage , color])
-
+ 
+     // set search params
      useEffect(() => {
         let paramsObject = {
         }
@@ -52,7 +54,7 @@ function MyCars(){
 
     const getAllHondaCity = async()=>{
         setLoading(true)
-        let res = await axios.get(`https://stormy-tights-hen.cyclic.app/car/honda/${user._id}` );
+        let res = await axios.get(`https://stormy-tights-hen.cyclic.app/car/all/honda` );
         let ans = await res.data;
         if(ans.status){
             setData(ans.cars);
@@ -69,7 +71,7 @@ function MyCars(){
         let data1 = await res1.data;
 
         if(data1.status){
-            let api = API(mileage , price ,color , `https://stormy-tights-hen.cyclic.app/car/${user._id}`)
+            let api = API(mileage , price ,color , `https://stormy-tights-hen.cyclic.app/car`)
             let res = await axios.get(api);
             let ans = await res.data;
             if(ans.status){
@@ -104,7 +106,7 @@ function MyCars(){
         console.log(data1)
 
         if(data1.status){
-            let api = API(mileage , price ,color ,  `https://stormy-tights-hen.cyclic.app/car/${user._id}`)
+            let api = API(mileage , price ,color ,  `https://stormy-tights-hen.cyclic.app/car`)
             let res = await axios.get(api);
             let ans = await res.data;
             if(ans.status){

@@ -63,6 +63,7 @@ function Login(){
                   })
             }
         } catch (error) {
+          setLoad(false)
             toast({
                 title: 'Error Occured',
                 description: error.message,

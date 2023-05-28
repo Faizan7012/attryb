@@ -48,7 +48,7 @@ export default function EditCar(){
                 isClosable: true,
                 position:'top'
               })
-              navigate('/mycar')
+              navigate('/')
         }
         else{
             toast({
