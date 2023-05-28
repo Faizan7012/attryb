@@ -72,6 +72,34 @@ Start the server
   npm run start
 ```
 
+
+
+## Run Locally for Backend Part
+
+Clone the project
+
+```bash or zsh
+  git clone https://github.com/Faizan7012/attryb.git
+```
+
+Go to the project directory
+
+```bash or zsh
+  cd backend
+```
+
+Install dependencies
+
+```bash or zsh
+  npm install
+```
+
+Start the server
+
+```bash or zsh
+  npm run start
+```
+
 <p align="center">
   <a href="https://socialgram-beige.vercel.app">
     <img src="https://readme-typing-svg.demolab.com/?lines=Thank You!  👨🏻‍💻;&font=Fira%20Code&center=true&width=440&height=45&color=#37bcf7&vCenter=true&size=22&pause=1000"></a>
