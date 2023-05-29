@@ -28,6 +28,7 @@ function MyCars(){
             let api = API(mileage , price ,color , `https://stormy-tights-hen.cyclic.app/car`)
             let res = await axios.get(api);
             let ans = await res.data;
+            console.log(ans)
             if(ans.status){
                 setData(ans.cars);
             }
@@ -103,7 +104,6 @@ function MyCars(){
     const handleDelMany = async()=>{
         let res1 = await axios.delete(`https://stormy-tights-hen.cyclic.app/car/manydel/${arr.join(',')}` );
         let data1 = await res1.data;
-        console.log(data1)
 
         if(data1.status){
             let api = API(mileage , price ,color ,  `https://stormy-tights-hen.cyclic.app/car`)
