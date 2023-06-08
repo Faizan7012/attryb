@@ -35,6 +35,7 @@ function Signup(){
         try {
             let res = await axios.post('https://stormy-tights-hen.cyclic.app/user/signup' , obj);
             let data = await res.data;
+            console.log(data)
             if(data.status){
                 setLoad(false)
                 toast({
@@ -59,6 +60,8 @@ function Signup(){
                   })
             }
         } catch (error) {
+          setLoad(false);
+          console.log(error)
             toast({
                 title: 'Error Occured',
                 description: error.message,

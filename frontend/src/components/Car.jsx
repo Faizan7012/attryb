@@ -1,32 +1,9 @@
-import { Box, Flex, Image, Text, Checkbox, Button,} from "@chakra-ui/react";
-import { useState } from "react";
+import { Box, Button, Flex, Image, Text } from '@chakra-ui/react';
 import { Link } from "react-router-dom";
 
-function CarDiv({car , handleDelCar , arr , setArr}){
-    const  c = arr.find((ele)=>ele==car._id)
-    const [a , setA] = useState(c);
-    
-const handleDel = ()=>{
-    handleDelCar(car._id)
-}
+function Car({car}){
 
-const handleChecked = (e)=>{
-    if(e.target.checked){
-      let newArr = arr.slice();
-      newArr.push(car._id);
-      setA(true)
-      setArr(newArr);
-      localStorage.setItem('attryb_arr' , JSON.stringify(newArr))
-   }
-   else{
-    let arr2 = arr.filter((ele)=>ele!==car._id);
-      setA(false)
-      setArr(arr2);
-      localStorage.setItem('attryb_arr' , JSON.stringify(arr2))
-   }
-}
-
-    return <Box
+    return   <Box
     maxW="sm"
     borderWidth="1px"
     borderRadius="lg"
@@ -34,9 +11,6 @@ const handleChecked = (e)=>{
     boxShadow="md"
     bg="white"
   >
-            <Flex justifyContent='right' p='0px 10px' mt='10px' mb='10px'>
-            <Checkbox isChecked={a} onChange={(e)=>handleChecked(e)} borderColor='blue'/>
-            </Flex>
     <Image maxW='100%' h='150px' m='auto' src={car.images} alt={car.model} />
     <Box p="6">
       <Box d="flex" alignItems="baseline">
@@ -81,17 +55,8 @@ const handleChecked = (e)=>{
       Inventory Details
     </Button>
     </Link>
-
-    <Flex justifyContent='space-between' alignItems='center' mt='10px' p='0px 20px'>
-     <Link className="edit" to={`/car/${car._id}`}>
-      Edit
-     </Link>
-     <Link className="delete" onClick={()=>handleDel()}>
-      Delete
-     </Link>
-    </Flex>
     </Box>
   </Box>
 }
 
-export default CarDiv
+export default Car

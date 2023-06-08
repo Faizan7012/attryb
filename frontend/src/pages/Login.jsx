@@ -32,10 +32,10 @@ function Login(){
     const handleSubmit = async(e)=>{
         e.preventDefault();
         setLoad(true)
-        e.preventDefault();
         try {
             let res = await axios.post('https://stormy-tights-hen.cyclic.app/user/login' , obj);
             let data = await res.data;
+            console.log(data)
             if(data.status){
                 setLoad(false)
                 toast({
@@ -66,7 +66,7 @@ function Login(){
           setLoad(false)
             toast({
                 title: 'Error Occured',
-                description: error.message,
+                description: error.response.data.message,
                 status: 'error',
                 duration: 3000,
                 isClosable: true,

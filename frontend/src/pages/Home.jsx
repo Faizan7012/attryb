@@ -1,14 +1,12 @@
-import { Box, Button, Flex, Select, SimpleGrid, Skeleton, Text, useToast } from "@chakra-ui/react";
+import { Box, Button, Flex, Image, Select, SimpleGrid, Skeleton, Text } from "@chakra-ui/react";
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import API from "./api";
 import { useSearchParams } from "react-router-dom";
-import { AuthContext } from "../context/Auth";
-import CarDiv from "../components/div";
-function MyCars(){
+import Car from "../components/Car";
+function Home(){
     let idArr = JSON.parse(localStorage.getItem('attryb_arr'))||[]
     const [data , setData] = useState([]);
-    const [arr , setArr] = useState(idArr);
     const [loading , setLoading] = useState(false);
     const [searchParams, setSearchParam] = useSearchParams();
     let a = searchParams.get('color')||'';
@@ -17,15 +15,13 @@ function MyCars(){
     const [mileage , setMileage] = useState(b)
     let c = searchParams.get('price')||'';
     const [price , setPrice] = useState(c);
-    const { user } = useContext(AuthContext);
-    const toast = useToast();
 
 
      useEffect(()=>{
         // get all cars data
         setLoading(true)
         async function getData(){
-            let api = API(mileage , price ,color , `https://stormy-tights-hen.cyclic.app/car/${user._id}`)
+            let api = API(mileage , price ,color , `https://stormy-tights-hen.cyclic.app/car`)
             let res = await axios.get(api);
             let ans = await res.data;
             console.log(ans)
@@ -52,76 +48,11 @@ function MyCars(){
         }
         setSearchParam(paramsObject)
     },[price , mileage , color])
-
-    const handleDelCar = async(id)=>{
-        let res1 = await axios.delete(`https://stormy-tights-hen.cyclic.app/car/del/${id}`);
-        let data1 = await res1.data;
-
-        if(data1.status){
-            let api = API(mileage , price ,color , `https://stormy-tights-hen.cyclic.app/car`)
-            let res = await axios.get(api);
-            let ans = await res.data;
-            if(ans.status){
-                setData(ans.cars);
-            }
-            toast({
-                title: 'Car deleted',
-                status: 'success',
-                duration: 3000,
-                isClosable: true,
-                position:'top'
-              })
-            setLoading(false)
-        }
-        else{
-            toast({
-                title: 'Error Occured',
-                status: 'error',
-                description : data1.message,
-                duration: 3000,
-                isClosable: true,
-                position:'top'
-              })
-        }
-        setLoading(false)
-
-    }
-
-    const handleDelMany = async()=>{
-        let res1 = await axios.delete(`https://stormy-tights-hen.cyclic.app/car/manydel/${arr.join(',')}` );
-        let data1 = await res1.data;
-
-        if(data1.status){
-            let api = API(mileage , price ,color ,  `https://stormy-tights-hen.cyclic.app/car`)
-            let res = await axios.get(api);
-            let ans = await res.data;
-            if(ans.status){
-                setData(ans.cars);
-            }
-            toast({
-                title: 'Selected car deleted',
-                status: 'success',
-                duration: 3000,
-                isClosable: true,
-                position:'top'
-              })
-              setArr([]);
-             localStorage.setItem('attryb_arr' , JSON.stringify([]))
-            setLoading(false)
-        }
-        else{
-            toast({
-                title: 'Error Occured',
-                status: 'error',
-                description : data1.message,
-                duration: 3000,
-                isClosable: true,
-                position:'top'
-              })
-        }
-        setLoading(false)
-
-    }
+    if(loading){
+        return <Flex w='100%' h='85vh' justifyContent='center' alignItems='center'>
+               <Image src='https://media2.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif?cid=ecf05e47srmulmbb6y28hhyqxremhy0u0c53ttn9e22qiw95&ep=v1_gifs_search&rid=giphy.gif&ct=g' />
+        </Flex>
+     }
     return <Box w='90%' m='auto' mt='40px' mb='50px'>
         <SimpleGrid gap='10px' mb='40px' columns={['1','1','2','3']}>
             <Select value={color} onChange={(e)=>setColor(e.target.value)}>
@@ -157,9 +88,6 @@ function MyCars(){
                 <option value={1500000}>1500000</option>
                 <option value={2000000}>2000000</option>
             </Select>
-            <Button display={arr.length == 0 ?'none':'block'} onClick={handleDelMany}>
-                Delete Selected Cars
-            </Button>
         </SimpleGrid>
         {
             loading ? <SimpleGrid gap='10px' columns={['1','1','2','4']}>
@@ -170,10 +98,10 @@ function MyCars(){
                 }
             </SimpleGrid>:data?.length==0?<Flex justifyContent='center' alignItems='center'>
                 <Text>No Car</Text>
-            </Flex>:<SimpleGrid gap='10px' columns={['1','1','2','4']}>
+            </Flex>:<SimpleGrid gap='20px' columns={['1','1','2','4']}>
                 {
                     data?.map((ele)=>{
-                        return <CarDiv key={ele._id} car={ele} handleDelCar={handleDelCar} arr={arr} setArr={setArr} />
+                        return <Car key={ele._id} car={ele} />
                     })
                 }
             </SimpleGrid>
@@ -182,4 +110,4 @@ function MyCars(){
 }
 
 
-export default MyCars;
+export default Home;

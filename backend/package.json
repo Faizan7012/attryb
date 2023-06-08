@@ -1,5 +1,5 @@
 {
-  "name": "backend",
+  "name": "attryb-api",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,7 +9,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies" : {
+  "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
@@ -17,3 +17,5 @@
     "nodemon": "^2.0.22"
   }
 }
+
+

@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Input, InputGroup, InputLeftAddon, useToast } from "@chakra-ui/react";
+import {Flex, FormControl, FormLabel, Input, Select, useToast } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -6,39 +6,21 @@ import { useNavigate, useParams } from "react-router-dom";
 export default function EditCar(){
     const params = useParams();
     const [obj , setObj] = useState({})
-    const [obj2 , setObj2] = useState({});
     const toast = useToast();
     const navigate = useNavigate();
 
     const handleChange = (e)=>{
         const {value , name} = e.target;
-        if(name == 'max_speed' || name == 'name' || name == 'power'){
             setObj({...obj , [name]:value})
         }
-        else{
-            setObj({...obj , [name]:Number(value)})
-        }
-    }
+    
 
-    const handleChange2 = (e)=>{
-        const {value , name} = e.target;
-        if( name =='registration_place'){
-            setObj2({...obj2 , [name]:value})
-        }
-        else{
-            setObj2({...obj2 , [name]:Number(value)})
-        }
-    }
-
-    const handleClick = async()=>{
-        let newObj = obj;
-        delete newObj.userID;
-        delete newObj._id;
-        delete newObj.__v;
-        delete newObj.inventry;
-        newObj.inventry = obj2;
-        
-        let res = await axios.put(`https://stormy-tights-hen.cyclic.app/car/edit/${params.id}` ,{car : newObj} );
+    const handleClick = async(e)=>{
+      e.preventDefault();
+        delete obj._id;
+        delete obj.__v;
+        delete obj.userID;
+        let res = await axios.put(`https://stormy-tights-hen.cyclic.app/car/edit/${params.id}` ,{car : obj} );
         let ans = await res.data;
         if(ans.status){
             toast({
@@ -48,7 +30,7 @@ export default function EditCar(){
                 isClosable: true,
                 position:'top'
               })
-              navigate('/')
+              navigate('/myposts')
         }
         else{
             toast({
@@ -70,52 +52,83 @@ export default function EditCar(){
         let ans = await res.data;
         if(ans.status){
             setObj(ans.cars);
-            setObj2(ans.cars.inventry)
         }
       }
       getObj();
     },[])
     return <Flex flexDirection='column' w={['300px','400px','500px','500px']} m='auto' mt='20px' gap='10px'>
-           <InputGroup>
-           <InputLeftAddon w='130px' bg='gray' children='Name' />
-             <Input fontSize='13px' fontWeight='500' type='text' value={obj.name} name='name' onChange={(e)=>handleChange(e)} />
-           </InputGroup>
-           <InputGroup>
-           <InputLeftAddon w='130px' bg='gray' children='Mileage' />
-             <Input fontSize='13px' fontWeight='500'  value={obj.mileage} name='mileage' onChange={(e)=>handleChange(e)} />
-           </InputGroup>
-           <InputGroup>
-           <InputLeftAddon w='130px' bg='gray' children='Power' />
-             <Input fontSize='13px' fontWeight='500' type='text' value={obj.power} name='power' onChange={(e)=>handleChange(e)} />
-           </InputGroup>
-           <InputGroup>
-           <InputLeftAddon w='130px' bg='gray' children='Max Speed' />
-             <Input fontSize='13px' fontWeight='500' type='text' value={obj.max_speed} name='max_speed' onChange={(e)=>handleChange(e)} />
-           </InputGroup>
-           <InputGroup>
-           <InputLeftAddon w='130px' bg='gray' children='Model Year' />
-             <Input fontSize='13px' fontWeight='500'  value={obj.model_year} name='model_year' onChange={(e)=>handleChange(e)} />
-           </InputGroup>
-           <InputGroup>
-           <InputLeftAddon w='130px' bg='gray' children='Price' />
-             <Input fontSize='13px' fontWeight='500'  value={obj.price} name='price' onChange={(e)=>handleChange(e)} />
-           </InputGroup>
-           <InputGroup>
-           <InputLeftAddon w='130px' bg='gray' children='KMs' />
-             <Input fontSize='13px' fontWeight='500'  value={obj2.KMs} name='KMs' onChange={(e)=>handleChange2(e)} />
-           </InputGroup>
-           <InputGroup>
-           <InputLeftAddon w='130px' bg='gray' children='Accident' />
-             <Input fontSize='13px' fontWeight='500'  value={obj2.accident} name='accident' onChange={(e)=>handleChange2(e)} />
-           </InputGroup>
-           <InputGroup>
-           <InputLeftAddon w='130px' bg='gray' children='Buyers' />
-             <Input fontSize='13px' fontWeight='500'  value={obj2.numberOfBuyers} name='numberOfBuyers' onChange={(e)=>handleChange2(e)} />
-           </InputGroup>
-           <InputGroup>
-           <InputLeftAddon w='130px' bg='gray' children='Register Place' />
-             <Input fontSize='13px' fontWeight='500'  value={obj2.registration_place} name='registration_place' onChange={(e)=>handleChange2(e)} />
-           </InputGroup>
-           <Button onClick={handleClick} bg='gray' _hover={{bg:'gray'}}>Update Car</Button>
+      <form onSubmit={(e)=>handleClick(e)}>
+      <FormControl>
+            <FormLabel>Company</FormLabel>
+
+<Select bg='teal' color='white' placeholder='Select Company' value={obj.car_Manufacturer}  name="car_Manufacturer" onChange={handleChange}>
+
+<option style={{backgroundColor:'teal'}} value="Maruti">Maruti</option>
+<option style={{backgroundColor:'teal'}} value="Hyundai">Hyundai</option>
+<option style={{backgroundColor:'teal'}} value="Tata">Tata</option>
+<option style={{backgroundColor:'teal'}} value="Mahindra">Mahindra</option>
+</Select>
+
+            </FormControl>
+
+            <FormControl mt={4}>
+            <FormLabel>Model</FormLabel>
+  <Input bg='teal' color='white' required type='text' value={obj.model} placeholder='ex- i-10,safari,thar'  name="model" onChange={handleChange}  />
+
+            </FormControl>
+
+             <FormControl  mt={4}>
+             <FormLabel>Year</FormLabel>
+  <Input bg='teal' color='white' value={obj.year} required type='number' placeholder='ex- 2010,2021' name="year" onChange={handleChange} />
+
+             </FormControl>
+
+             <FormControl mt={4}>
+             <FormLabel>Paint</FormLabel>
+  <Select bg='teal' color='white' placeholder='Select color' value={obj.Original_Paint}   name="Original_Paint" onChange={handleChange} >
+    <option style={{backgroundColor:'teal'}} value="Red">Red</option>
+    <option style={{backgroundColor:'teal'}} value="White">White</option>
+    <option style={{backgroundColor:'teal'}} value="Black">Black</option>
+    <option style={{backgroundColor:'teal'}} value="Blue">Blue</option>
+    <option style={{backgroundColor:'teal'}} value="Gray">Gray</option>
+    <option style={{backgroundColor:'teal'}} value="Green">Green</option>
+  </Select>
+             </FormControl>
+
+             <FormControl mt={4}>
+             <FormLabel>No. of Accidents</FormLabel>
+  <Input bg='teal' color='white' required type='number' placeholder='ex- 1,2,3' value={obj.Number_of_accidents_reported} name="Number_of_accidents_reported" onChange={handleChange}  />
+      
+             </FormControl>
+
+             <FormControl mt={4}>
+             <FormLabel>Number_of_previous_buyers</FormLabel>
+      <Input bg='teal' color='white' required type='number' placeholder='ex- 1,2,3....' value={obj.Number_of_previous_buyers}  name="Number_of_previous_buyers" onChange={handleChange} />
+      
+             </FormControl>
+
+             <FormControl mt={4}>
+             <FormLabel>Registration_Place</FormLabel>
+      <Input bg='teal' color='white' required type='text' placeholder='ex- city name....' value={obj.Registration_Place}  name="Registration_Place"  onChange={handleChange}  />
+
+             </FormControl>
+             <FormControl mt={4}>
+             <FormLabel>KMs_on_Odometer</FormLabel>
+  <Input bg='teal' color='white' required type='number' placeholder='ex- 12000,15000....' value={obj.KMs_on_Odometer}  name="KMs_on_Odometer" onChange={handleChange} />
+
+             </FormControl>
+             <FormControl mt={4}>
+             <FormLabel>Major_Scratches</FormLabel>
+  <Input bg='teal' color='white' required type='number' placeholder='ex- 1,2,3....' value={obj.Major_Scratches}  name="Major_Scratches" onChange={handleChange}/>
+
+             </FormControl>
+             <FormControl mt={4}>
+             <FormLabel>price</FormLabel>
+  <Input bg='teal' color='white' required type='number' placeholder='ex- 500000,110000' value={obj.price}  name="price" onChange={handleChange} />
+ 
+             </FormControl>
+    <Input bg='teal' color='white' mt='30px' _hover={{bg:'teal'}} type='submit' value='Update' />
+      </form>
+           
     </Flex>
 }
