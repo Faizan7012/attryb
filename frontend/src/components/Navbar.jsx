@@ -34,9 +34,11 @@ const Navbar = ()=>{
    <Link to='/myposts'>
    <Button border='none' _hover={{bg:'none'}} bg='none'>Your Posts</Button>
    </Link>
-   <Link >
+     {
+      isAuth? <Link >
    <Button bg='teal' color='#fff' _hover={{bg:'teal'}}>{user?.username}</Button>
-   </Link>
+   </Link>:null
+    }
     {
       isAuth?<Button bg='teal' color='#fff' _hover={{bg:'teal'}} onClick={handleLogout}>Logout</Button>:
    <Link to='/login'>
@@ -75,9 +77,11 @@ const Navbar = ()=>{
     <Link to='/myposts'>
     <Button _hover={{bg:'none'}} onClick={()=>setIsOpen(false)} border='none' bg='none'>Your Posts</Button>
     </Link>
-    <Link >
+    {
+      isAuth? <Link >
    <Button bg='teal' color='#fff' _hover={{bg:'teal'}}>{user?.username}</Button>
-   </Link>
+   </Link>:null
+    }
     {
       isAuth?<Button bg='none' onClick={()=>handleLogout()}>Logout</Button>:
    <Link to='/login'>

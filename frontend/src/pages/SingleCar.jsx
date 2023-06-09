@@ -87,16 +87,13 @@ export default function SignleCar(){
             <VStack>
             <Text fontSize='25px' fontWeight='600'>OEM Specs</Text>
             <Text fontSize="sm" fontWeight="semibold" color="gray.600" mr="2">
-                Car Manufecturer : {oem.car_manufacturer}
+                Car Manufecturer : {oem.car_manufacturers}
                 </Text>
                 <Text fontSize="sm" fontWeight="semibold" color="gray.600" mr="2">
-                Model Name : {oem.model}
+                Model Name : {car.model}
                 </Text>
                 <Text fontSize="sm" fontWeight="semibold" color="gray.600" mr="2">
-                Model Year : {oem.year}
-                </Text>
-                <Text fontSize="sm" fontWeight="semibold" color="gray.600" mr="2">
-                Model Yaer : {oem.year}
+                Model Year : {car.year}
                 </Text>
                 <Text fontSize="sm" fontWeight="semibold" color="gray.600" mr="2">
                 Power : {oem.power} BHP
@@ -108,7 +105,7 @@ export default function SignleCar(){
                 Mileage : {oem.mileage}
                 </Text>
                 <Text fontSize="sm" fontWeight="semibold" color="gray.600" mr="2">
-                New Vehicle Price : {oem.price_of_new_vehicle}
+                New Vehicle Price : {car.price + 109980}
                 </Text>
                 <Text fontSize="sm" fontWeight="semibold" color="gray.600" mr="2">
                 Colors Available : {oem.available_color}
